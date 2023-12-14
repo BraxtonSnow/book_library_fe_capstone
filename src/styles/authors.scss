@@ -1,0 +1,15 @@
+.authors-container {
+  .authors-title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 5px solid rgb(60, 3, 3);
+    background-color: bisque;
+    h1 {
+      display: flex;
+      justify-content: center;
+      width: 30%;
+      text-decoration: underline;
+    }
+  }
+}
