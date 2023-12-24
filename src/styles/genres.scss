@@ -1,5 +1,5 @@
-.authors-container {
-  .authors-title-container {
+.genres-container {
+  .genres-title-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,7 +12,7 @@
       text-decoration: underline;
     }
   }
-  .authors-button-container {
+  .genres-button-container {
     margin: 15px;
     button {
       height: 40px;
@@ -23,14 +23,14 @@
       color: rgb(229, 201, 41);
     }
   }
-  .main-map-authors-container {
+  .main-map-genres-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 650px;
 
-    .map-authors-container {
+    .map-genres-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;

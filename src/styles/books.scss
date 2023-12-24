@@ -12,4 +12,35 @@
       text-decoration: underline;
     }
   }
+  .books-button-container {
+    margin: 15px;
+    button {
+      height: 40px;
+      width: 150px;
+      background-color: #3c4e4bc6;
+      font-size: 18px;
+      font-weight: 700;
+      color: rgb(229, 201, 41);
+    }
+  }
+  .main-map-books-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 650px;
+
+    .map-books-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      height: 550px;
+      gap: 10px;
+      overflow-y: scroll;
+      background-color: rgba(0, 0, 0, 0.478);
+      border: 10px solid #0009069a;
+    }
+  }
 }

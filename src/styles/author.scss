@@ -1,0 +1,29 @@
+.main-author-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  border: 1px solid yellow;
+  margin-top: 20px;
+  .author-title-container {
+    font-size: 30px;
+    text-decoration: underline;
+    border: 1px solid red;
+    h3 {
+      margin: 0px;
+    }
+  }
+  .author-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid blue;
+  }
+  .author-button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 180px;
+    border: 1px solid green;
+  }
+}

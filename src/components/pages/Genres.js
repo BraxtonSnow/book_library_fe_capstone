@@ -3,9 +3,10 @@ import { NavLink } from "react-router-dom";
 
 import NavBar from "../navigations/NavBar";
 import GenresMapper from "../mappers/GenresMapper";
+import MainImage from "../images/MainImage";
 
 export default function Genres(props) {
-  const [dataInfo, setDataInfo] = useState("");
+  const [dataInfo, setDataInfo] = useState([]);
 
   useEffect(() => {
     console.log("running author");
@@ -33,18 +34,21 @@ export default function Genres(props) {
   console.log(dataInfo);
 
   return (
-    <div className="books-container">
-      <div className="books-title-container">
+    <div className="genres-container">
+      <MainImage />
+      <div className="genres-title-container">
         <h1>Genres</h1>
         <NavBar />
       </div>
-      <div>
+      <div className="genres-button-container">
         <NavLink exact to="/create-genre-page">
           <button>Create Genre</button>
         </NavLink>
       </div>
-      <div>
-        <GenresMapper dataInfo={dataInfo} setGenreID={props.setGenreID} />
+      <div className="main-map-genres-container">
+        <div className="map-genres-container">
+          <GenresMapper dataInfo={dataInfo} setGenreID={props.setGenreID} />
+        </div>
       </div>
     </div>
   );

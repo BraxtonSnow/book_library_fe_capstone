@@ -9,26 +9,20 @@ export default function AuthorsMapper(props) {
   return props.dataInfo?.map((author) => {
     console.log("author: ", author.author_id);
     return (
-      <div key={author.author_id}>
+      <div key={author.author_id} className="authors-mapper-container">
         <Link
           to={`/authors/${author.author_id}`}
           key={author.author_id}
-          className="product-card-button-container"
+          className="authors-map-button-container"
           onClick={() => {
             handleClick(props.dataInfo, author.author_id);
           }}
         >
-          <div className="product-card-container">
-            <div className="card-title">{author.author_name}</div>
-            <div className="card-description">{author.description}</div>
+          <div className="authors-card-container">
+            <div className="authors-title">{author.author_name}</div>
+            <div className="authors-description">{author.description}</div>
           </div>
         </Link>
-        {/* <button
-        // key={product.id}
-        // onClick={() => props.function(product)}
-        >
-          {props.buttonName}
-        </button> */}
       </div>
     );
   });

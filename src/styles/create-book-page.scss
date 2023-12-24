@@ -1,0 +1,42 @@
+.main-book-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border: 1px solid black;
+  .main-form-container {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    border: 1px solid red;
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 300px;
+      border: 1px solid green;
+
+      input {
+        width: 150px;
+        height: 20px;
+      }
+      h3 {
+        margin: 0px;
+      }
+      .form-title-container {
+        font-size: 24px;
+      }
+      .book-title-container {
+        display: flex;
+        justify-content: space-between;
+      }
+      .description-container {
+        display: flex;
+        justify-content: space-between;
+      }
+      .author-select-container {
+        display: flex;
+      }
+    }
+  }
+}

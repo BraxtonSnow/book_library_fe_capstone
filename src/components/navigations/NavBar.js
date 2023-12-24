@@ -16,6 +16,9 @@ export default function NavBar() {
         <NavLink to="/genres">
           <button>Genres</button>
         </NavLink>
+        <NavLink to="/images">
+          <button>Images</button>
+        </NavLink>
         <NavLink to="/">
           <button>Log Out</button>
         </NavLink>

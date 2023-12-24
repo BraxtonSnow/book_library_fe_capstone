@@ -12,6 +12,7 @@ import CreateGenrePage from "./components/pages/CreateGenrePage";
 import Genres from "./components/pages/Genres";
 import Genre from "./components/pages/Genre";
 import Author from "./components/pages/Author";
+import Images from "./components/pages/Images";
 
 import "./app.scss";
 // import AsyncApiCall from "./util/apiWrapper";
@@ -58,6 +59,7 @@ export default function App() {
             path="/genres/:slug"
             render={(routeProps) => <Genre {...routeProps} genreID={genreID} />}
           />
+          <Route exact path="/images" render={(routeProps) => <Images />} />
 
           <Route
             path="/create-account-page"

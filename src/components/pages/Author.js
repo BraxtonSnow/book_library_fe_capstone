@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
+import AuthorUpdate from "../updates/AuthorUpdate";
+
 export default function Author(props) {
   const [dataInfo, setDataInfo] = useState("");
+  const [display, setDisplay] = useState("None");
+
+  function ShowUpdateContent() {
+    setDisplay("block");
+  }
 
   useEffect(() => {
     console.log("running author");
@@ -31,19 +38,23 @@ export default function Author(props) {
   console.log(dataInfo);
 
   return (
-    <div>
-      <div>
+    <div className="main-author-container">
+      <div className="author-title-container">
         <h3>Author</h3>
       </div>
-      <div>
+      <div className="author-info-container">
         <h2>{dataInfo.author_name}</h2>
         <p>{dataInfo.background}</p>
         <h5>{dataInfo.date_of_birth}</h5>
       </div>
-      <div>
+      <div className="author-button-container">
         <NavLink exact to="/authors">
           <button>{"<= Back"}</button>
         </NavLink>
+        <button onClick={() => ShowUpdateContent()}>{"Edit Author"}</button>
+      </div>
+      <div style={{ display: display }} className="author-component-container">
+        <AuthorUpdate authorID={props.authorID} />
       </div>
     </div>
   );

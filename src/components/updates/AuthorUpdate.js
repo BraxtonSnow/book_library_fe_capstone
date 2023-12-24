@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-export default function CreateAuthorPage() {
+export default function AuthorUpdate(props) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [month, setMonth] = useState("month option");
@@ -16,9 +16,9 @@ export default function CreateAuthorPage() {
   //   console.log(lastName);
   // }, [month, firstName, lastName]);
 
-  console.log("the month: ", month);
   function createAuthor(e) {
     e.preventDefault();
+
     console.log("running");
     const myData = JSON.stringify({
       author_name: firstName,
@@ -27,7 +27,7 @@ export default function CreateAuthorPage() {
     });
     console.log("myData: ", myData);
     const payload = {
-      method: "POST",
+      method: "PUT",
       body: myData,
       headers: {
         "Content-Type": "application/json",
@@ -37,9 +37,11 @@ export default function CreateAuthorPage() {
 
     async function fetchData(payload) {
       // console.log("payload: ", payload);
-      const data = await fetch("http://localhost:8086/author", payload).then(
-        (res) => res.json()
-      );
+      console.log("props.author_id", props.authorID);
+      const data = await fetch(
+        `http://localhost:8086/author/${props.authorID}`,
+        payload
+      ).then((res) => res.json());
       setDataInfo(data);
     }
 

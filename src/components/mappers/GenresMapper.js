@@ -9,18 +9,17 @@ export default function AuthorsMapper(props) {
   return props.dataInfo?.map((genre) => {
     console.log("author: ", genre.genre_id);
     return (
-      <div key={genre.genre_id}>
+      <div key={genre.genre_id} className="genres-mapper-container">
         <Link
           to={`/genres/${genre.genre_id}`}
           key={genre.genre_id}
-          className="product-card-button-container"
+          className="genres-map-button-container"
           onClick={() => {
             handleClick(props.dataInfo, genre);
           }}
         >
-          <div className="product-card-container">
-            <div className="card-title">{genre.genre_name}</div>
-            <div className="card-description">{genre.description}</div>
+          <div className="genres-card-container">
+            <div className="genres-title">{genre.genre_name}</div>
           </div>
         </Link>
       </div>
