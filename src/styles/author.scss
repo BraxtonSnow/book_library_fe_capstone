@@ -1,7 +1,8 @@
 .main-author-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  //   justify-content: space-around;
+  gap: 15px;
   height: 100%;
   border: 1px solid yellow;
   margin-top: 20px;
@@ -10,7 +11,8 @@
     text-decoration: underline;
     border: 1px solid red;
     h3 {
-      margin: 0px;
+      font-size: 50px;
+      margin: 15px 0px 0px 0px;
     }
   }
   .author-info-container {
@@ -18,7 +20,31 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid blue;
+    border: 5px solid black;
+    width: 700px;
+    height: 600px;
+    background-color: teal;
+
+    h2 {
+      font-size: 45px;
+      font-weight: 700;
+      font-style: italic;
+      text-decoration: underline;
+      text-shadow: 3px 1.3px 10px white;
+      color: black;
+    }
+    p {
+      display: flex;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 20px;
+      font-style: italic;
+      border: 2px solid black;
+      width: 80%;
+      height: 300px;
+      padding: 15px;
+      overflow-y: scroll;
+    }
   }
   .author-button-container {
     display: flex;

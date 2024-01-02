@@ -1,14 +1,45 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
+import Cookies from "js-cookie";
 
 import GenreUpdate from "../updates/GenreUpdate";
 
 export default function Genre(props) {
   const [dataInfo, setDataInfo] = useState("");
   const [display, setDisplay] = useState("None");
+  const authToken = Cookies.get("auth_token");
+
+  const history = useHistory();
 
   function showUpdate() {
     setDisplay("block");
+  }
+
+  function GenreActivity() {
+    console.log("running author");
+    console.log("myData: ", dataInfo);
+
+    const payload = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Auth-Token": authToken,
+      },
+    };
+
+    async function fetchData(payload) {
+      // console.log("payload: ", payload);
+      const data = await fetch(
+        `http://localhost:8086/genre/${props.genreID}`,
+        payload
+      ).then((res) => res.json());
+      setDataInfo(data);
+      console.log(data);
+    }
+    history.push("/genres");
+
+    fetchData(payload);
   }
 
   useEffect(() => {
@@ -19,6 +50,7 @@ export default function Genre(props) {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        "Auth-Token": authToken,
       },
     };
 
@@ -38,19 +70,24 @@ export default function Genre(props) {
   console.log(dataInfo);
 
   return (
-    <div>
-      <div>
-        <h1>Genre</h1>
+    <div className="main-genre-container">
+      <div className="genre-title-container">
+        <h3>Genre</h3>
       </div>
-      <div>
-        <h3>{dataInfo.genre_name}</h3>
+      <div className="genre-info-container">
+        <h2>{dataInfo.genre_name}</h2>
         <p>{dataInfo.description}</p>
       </div>
-      <NavLink exact to="/genres">
-        <button>{"<= Back"}</button>
-      </NavLink>
-      <button onClick={() => showUpdate()}>Edit Genre</button>
-      <div style={{ display: display }}>
+      <button onClick={() => GenreActivity()}>
+        {dataInfo.active ? "Deactivate" : "Activate"}
+      </button>
+      <div className="genre-button-container">
+        <NavLink exact to="/genres">
+          <button>{"<= Back"}</button>
+        </NavLink>
+        <button onClick={() => showUpdate()}>Edit Genre</button>
+      </div>
+      <div style={{ display: display }} className="genre-component-container">
         <GenreUpdate genreID={props.genreID} />
       </div>
     </div>

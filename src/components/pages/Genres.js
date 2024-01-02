@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import Cookies from "js-cookie";
 
 import NavBar from "../navigations/NavBar";
 import GenresMapper from "../mappers/GenresMapper";
@@ -10,12 +11,14 @@ export default function Genres(props) {
 
   useEffect(() => {
     console.log("running author");
-    console.log("myData: ", dataInfo);
+    const authToken = Cookies.get("auth_token");
+    // console.log("myData: ", dataInfo);
     const payload = {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        "Auth-Token": authToken,
       },
     };
 

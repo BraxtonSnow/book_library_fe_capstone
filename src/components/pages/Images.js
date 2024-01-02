@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+// import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import NavBar from "../navigations/NavBar";
 import MainImage from "../images/MainImage";
 
 export default function Images() {
-  const [dataInfo, setDataInfo] = useState([]);
+  // const [dataInfo, setDataInfo] = useState([]);
 
   // useEffect(() => {
   //   console.log("running author");

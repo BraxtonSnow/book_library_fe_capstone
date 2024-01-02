@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function CreateAuthorPage() {
   const [firstName, setFirstName] = useState("");
@@ -19,6 +20,7 @@ export default function CreateAuthorPage() {
   console.log("the month: ", month);
   function createAuthor(e) {
     e.preventDefault();
+    const authToken = Cookies.get("auth_token");
     console.log("running");
     const myData = JSON.stringify({
       author_name: firstName,
@@ -32,6 +34,7 @@ export default function CreateAuthorPage() {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        "Auth-Token": authToken,
       },
     };
 

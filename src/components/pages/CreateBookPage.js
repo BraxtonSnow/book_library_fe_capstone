@@ -5,7 +5,7 @@ export default function CreateBookPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   // const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [password, setPassword] = useState("");
   // const [author, setAuthor] = useState("author option");
 
   return (

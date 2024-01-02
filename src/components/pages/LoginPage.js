@@ -1,43 +1,51 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const history = useHistory();
+  // const [dataInfo, setDataInfo] = useState([]);
 
-  // function loginFetch() {
-  //   console.log("running");
-  //   // async function fetchStuff() {
-  //   //   const result = await AsyncApiCall(data.current);
-  //   //   setDataInfo(result);
-  //   // }
-  //   // fetchStuff();
+  function loginFetch(e) {
+    e.preventDefault();
+    console.log("running");
 
-  //   const myData = JSON.stringify(multiData);
-  //   // console.log("myData: ", myData);
-  //   const payload = {
-  //     method: myMethod,
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //     },
-  //   };
-  //   if (multiData) payload.body = myData;
+    const myData = JSON.stringify({
+      email: email,
+      password: password,
+    });
 
-  //   async function fetchData(payload) {
-  //     // console.log("payload: ", payload);
-  //     const data = await fetch("http://localhost:8086/user", payload).then(
-  //       (res) => res.json()
-  //     );
-  //     setDataInfo(data);
-  //   }
+    const payload = {
+      method: "POST",
+      body: myData,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    };
 
-  //   fetchData(payload);
-  // }
+    async function fetchData(payload) {
+      console.log("payload: ", payload);
+      const data = await fetch("http://localhost:8086/auth/user", payload);
+      const response = await data.json();
 
-  // useEffect(() => {
-  //   console.log("dataInfo: ", dataInfo);
-  // }, [dataInfo]);
+      // .then(
+      //   (res) => res.json()
+      // );
+      Cookies.set("auth_token", response.auth.auth_token);
+      console.log(response);
+
+      if (response) {
+        history.push("/homepage");
+      } else {
+        console.log("login did not work");
+      }
+    }
+
+    fetchData(payload);
+  }
 
   return (
     <div className="main-login-container">
@@ -56,14 +64,13 @@ export default function LoginPage() {
           <div className="password-container">
             <h3>Password:</h3>
             <input
+              type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="submit-container">
-            <NavLink to={password && email ? "/homepage" : "/"}>
-              <input type="submit" />
-            </NavLink>
+            <button onClick={loginFetch}>Submit</button>
           </div>
         </form>
       </div>

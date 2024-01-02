@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function CreateBookPage() {
   const [genreName, setGenreName] = useState("");
@@ -8,6 +9,8 @@ export default function CreateBookPage() {
 
   function createGenre(e) {
     e.preventDefault();
+
+    const authToken = Cookies.get("auth_token");
 
     console.log("running");
     const myData = JSON.stringify({
@@ -21,6 +24,7 @@ export default function CreateBookPage() {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        "Auth-Token": authToken,
       },
     };
 
@@ -38,36 +42,34 @@ export default function CreateBookPage() {
   console.log(dataInfo);
 
   return (
-    <div>
+    <div className="main-book-container">
       <h1>Create Genre Page</h1>
-      <div>
-        <div>
-          <form>
-            <div>
-              <h3>Genre Info</h3>
-            </div>
-            <div>
-              <h3>Genre</h3>
-              <input
-                value={genreName}
-                onChange={(e) => setGenreName(e.target.value)}
-              />
-            </div>
-            <div>
-              <h3>Description</h3>
-              <input
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </div>
-            <input type="submit" onClick={(e) => createGenre(e)} />
-          </form>
+      <div className="main-form-container">
+        <form className="form-container">
+          <div className="form-title-container">
+            <h3>Genre Info</h3>
+          </div>
+          <div className="book-title-container">
+            <h3>Genre</h3>
+            <input
+              value={genreName}
+              onChange={(e) => setGenreName(e.target.value)}
+            />
+          </div>
+          <div className="description-container">
+            <h3>Description</h3>
+            <input
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
           <div>
+            <input type="submit" onClick={(e) => createGenre(e)} />
             <NavLink exact to="/genres">
               <button>{"<= Back"}</button>
             </NavLink>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

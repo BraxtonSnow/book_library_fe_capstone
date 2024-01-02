@@ -20,7 +20,7 @@ export default function AuthorsMapper(props) {
         >
           <div className="authors-card-container">
             <div className="authors-title">{author.author_name}</div>
-            <div className="authors-description">{author.description}</div>
+            {/* <div className="authors-description">{author.description}</div> */}
           </div>
         </Link>
       </div>
